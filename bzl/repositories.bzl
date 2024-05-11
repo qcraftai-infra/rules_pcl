@@ -32,6 +32,10 @@ def pcl_repositories():
         build_file = "@rules_pcl//third_party:flann.BUILD",
         sha256 = "9080a91be5759a0b4ef41f62e58896a714ec85d37c2567341a0503039655b1eb",
         strip_prefix = "flann-1d04523268c388dabf1c0865d69e1b638c8c7d9d",
+        patch_args = ["-p1"],
+        patches = [
+            "@rules_pcl//third_party:p02_fix_lz4_include.patch",
+        ],
         urls = [
             "https://qcraft-web.oss-cn-beijing.aliyuncs.com/cache/packages/flann-1d04523268c388dabf1c0865d69e1b638c8c7d9d.tar.gz",
             "https://github.com/flann-lib/flann/archive/1d04523268c388dabf1c0865d69e1b638c8c7d9d.tar.gz",

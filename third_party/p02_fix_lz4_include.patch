@@ -1,0 +1,15 @@
+diff --git a/src/cpp/flann/util/serialization.h b/src/cpp/flann/util/serialization.h
+index cdc2e5e..64bb7d1 100644
+--- a/src/cpp/flann/util/serialization.h
++++ b/src/cpp/flann/util/serialization.h
+@@ -6,8 +6,8 @@
+ #include <cstdlib>
+ #include <cstring>
+ #include <stdio.h>
+-#include <lz4.h>
+-#include <lz4hc.h>
++#include <lz4/lz4.h>
++#include <lz4/lz4hc.h>
+
+
+ namespace flann
