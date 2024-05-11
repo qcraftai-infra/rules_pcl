@@ -80,6 +80,10 @@ def pcl_repositories():
         build_file = "@rules_pcl//third_party:pcl.BUILD",
         sha256 = "85fd437a1b326de57d85d9862a1ca3e833301f8d78a1cafdbe48113ffd9f9168",
         strip_prefix = "pcl-1d3622c1e624994bc013e3e66bc5d98fbb807a89",
+        patch_args = ["-p1"],
+        patches = [
+            "@rules_pcl//third_party:p01_pcl_build.patch",
+        ],
         urls = [
             "https://qcraft-web.oss-cn-beijing.aliyuncs.com/cache/packages/pcl-1d3622c1e624994bc013e3e66bc5d98fbb807a89.tar.gz",
             "https://github.com/PointCloudLibrary/pcl/archive/1d3622c1e624994bc013e3e66bc5d98fbb807a89.tar.gz",

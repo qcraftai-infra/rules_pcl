@@ -1,0 +1,64 @@
+diff --git a/common/include/pcl/common/impl/bivariate_polynomial.hpp b/common/include/pcl/common/impl/bivariate_polynomial.hpp
+index de1db4e..2bfa28f 100644
+--- a/common/include/pcl/common/impl/bivariate_polynomial.hpp
++++ b/common/include/pcl/common/impl/bivariate_polynomial.hpp
+@@ -266,9 +266,9 @@ pcl::operator<< (std::ostream& os, const pcl::BivariatePolynomialT<real>& p)
+ template<typename real> void
+ pcl::BivariatePolynomialT<real>::writeBinary (std::ostream& os) const
+ {
+-  os.write (reinterpret_cast<char*> (&degree), sizeof (int));
++  os.write (reinterpret_cast<const char*> (&degree), sizeof (int));
+   unsigned int paramCnt = getNoOfParametersFromDegree (this->degree);
+-  os.write (reinterpret_cast<char*> (this->parameters), paramCnt * sizeof (real));
++  os.write (reinterpret_cast<const char*> (this->parameters), paramCnt * sizeof (real));
+ }
+ 
+ ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+diff --git a/surface/include/pcl/surface/3rdparty/poisson4/sparse_matrix.hpp b/surface/include/pcl/surface/3rdparty/poisson4/sparse_matrix.hpp
+index e8fae96..9c1bb86 100644
+--- a/surface/include/pcl/surface/3rdparty/poisson4/sparse_matrix.hpp
++++ b/surface/include/pcl/surface/3rdparty/poisson4/sparse_matrix.hpp
+@@ -251,9 +251,9 @@ namespace pcl
+     template<class T>
+     SparseMatrix<T>& SparseMatrix<T>::operator *= (const T& V)
+     {
+-      for (int i=0; i<this->Rows(); i++)
++      for (int i=0; i<rows; i++)
+       {
+-        for(int ii=0;ii<m_ppElements[i].size();i++){m_ppElements[i][ii].Value*=V;}
++        for(int ii=0;ii<rowSizes[i];ii++){m_ppElements[i][ii].Value*=V;}
+       }
+       return *this;
+     }
+@@ -261,12 +261,12 @@ namespace pcl
+     template<class T>
+     SparseMatrix<T> SparseMatrix<T>::Multiply( const SparseMatrix<T>& M ) const
+     {
+-      SparseMatrix<T> R( this->Rows(), M.Columns() );
+-      for(int i=0; i<R.Rows(); i++){
+-        for(int ii=0;ii<m_ppElements[i].size();ii++){
++      SparseMatrix<T> R( rows, M._maxEntriesPerRow );
++      for(int i=0; i<R.rows; i++){
++        for(int ii=0;ii<rowSizes[i];ii++){
+           int N=m_ppElements[i][ii].N;
+           T Value=m_ppElements[i][ii].Value;
+-          for(int jj=0;jj<M.m_ppElements[N].size();jj++){
++          for(int jj=0;jj<M.rowSizes[N];jj++){
+             R(i,M.m_ppElements[N][jj].N) += Value * M.m_ppElements[N][jj].Value;
+           }
+         }
+@@ -320,11 +320,11 @@ namespace pcl
+     template<class T>
+     SparseMatrix<T> SparseMatrix<T>::Transpose() const
+     {
+-      SparseMatrix<T> M( this->Columns(), this->Rows() );
++      SparseMatrix<T> M( _maxEntriesPerRow, rows );
+ 
+-      for (int i=0; i<this->Rows(); i++)
++      for (int i=0; i<rows; i++)
+       {
+-        for(int ii=0;ii<m_ppElements[i].size();ii++){
++        for(int ii=0;ii<rowSizes[i];ii++){
+           M(m_ppElements[i][ii].N,i) = m_ppElements[i][ii].Value;
+         }
+       }
