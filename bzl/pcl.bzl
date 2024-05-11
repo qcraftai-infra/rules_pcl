@@ -96,6 +96,8 @@ def _gen_pcl_config_impl(ctx):
             ("HAVE_PNG", True),
             ("HAVE_QVTK 1", False),
             ("HAVE_FZAPI 1", False),
+            ("HAVE_ZLIB", True),
+            ("PCL_PREFER_BOOST_FILESYSTEM", False),
         ),
     )
 
