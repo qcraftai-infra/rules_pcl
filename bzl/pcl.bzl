@@ -25,6 +25,7 @@ _PCL_DEFAULT_COMPILER_CONFIG = {
 def _compiler_config_value(value, kwargs):
     # NOTE: __pcl_linux-aarch64 is defined by the pcl_config macro.
     default_architecture_value =  select({
+        ":__pcl_linux-aarch64-cross-compile": _PCL_AARCH64_COMPILER_CONFIG[value],
         ":__pcl_linux-aarch64": _PCL_AARCH64_COMPILER_CONFIG[value],
         "//conditions:default": _PCL_DEFAULT_COMPILER_CONFIG[value],
     })
@@ -174,6 +175,14 @@ def pcl_config(**kwargs):
             "@platforms//os:linux",
             "@platforms//cpu:aarch64",
         ],
+    )
+    native.config_setting(
+        name = "__pcl_linux-aarch64-cross-compile",
+        constraint_values = [
+            "@platforms//os:linux",
+            "@platforms//cpu:x86_64",
+        ],
+        values = {"cpu": "aarch64"},
     )
     gen_pcl_config(
         name = "__pcl_gen_pcl_config",
