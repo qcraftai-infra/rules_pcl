@@ -153,6 +153,7 @@ def pcl_library(name, **kwargs):
     native.cc_library(
         name = name,
         srcs = native.glob([
+            "{}/src/**/*.c".format(name),
             "{}/src/**/*.cpp".format(name),
             "{}/include/**/*.hpp".format(name),
         ], exclude = exclude_srcs),
