@@ -10,7 +10,10 @@ def pcl_repositories():
         name = "com_github_nelhage_rules_boost",
         sha256 = "490d11425393eed068966a4990ead1ff07c658f823fd982fddac67006ccc44ab",
         strip_prefix = "rules_boost-57c99395e15720e287471d79178d36a85b64d6f6",
-        urls = ["https://github.com/nelhage/rules_boost/archive/57c99395e15720e287471d79178d36a85b64d6f6.tar.gz"],
+        urls = [
+	    "https://qcraft-web.oss-cn-beijing.aliyuncs.com/cache/packages/rules_boost-57c99395e15720e287471d79178d36a85b64d6f6.tar.gz",
+	    "https://github.com/nelhage/rules_boost/archive/57c99395e15720e287471d79178d36a85b64d6f6.tar.gz",
+	],
     )
 
     maybe(
@@ -18,7 +21,10 @@ def pcl_repositories():
         name = "com_google_googletest",
         sha256 = "8ad598c73ad796e0d8280b082cebd82a630d73e73cd3c70057938a6501bba5d7",
         strip_prefix = "googletest-1.14.0",
-        urls = ["https://github.com/google/googletest/archive/refs/tags/v1.14.0.tar.gz"],
+        urls = [
+	    "https://qcraft-web.oss-cn-beijing.aliyuncs.com/cache/packages/gtest-v1.14.0.tar.gz",
+	    "https://github.com/google/googletest/archive/refs/tags/v1.14.0.tar.gz",
+	],
     )
 
     maybe(
@@ -27,7 +33,10 @@ def pcl_repositories():
         build_file = "@rules_pcl//third_party:eigen.BUILD",
         sha256 = "8586084f71f9bde545ee7fa6d00288b264a2b7ac3607b974e54d13e7162c1c72",
         strip_prefix = "eigen-3.4.0",
-        urls = ["https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.tar.gz"],
+        urls = [
+	    "https://qcraft-web.oss-cn-beijing.aliyuncs.com/cache/packages/eigen-3.4.0.tar.gz",
+	    "https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.tar.gz",
+	],
     )
 
     maybe(
@@ -36,7 +45,10 @@ def pcl_repositories():
         build_file = "@rules_pcl//third_party:flann.BUILD",
         sha256 = "e26829bb0017f317d9cc45ab83ddcb8b16d75ada1ae07157006c1e7d601c8824",
         strip_prefix = "flann-1.9.2",
-        urls = ["https://github.com/flann-lib/flann/archive/refs/tags/1.9.2.tar.gz"],
+        urls = [
+	    "https://qcraft-web.oss-cn-beijing.aliyuncs.com/cache/packages/flann-1.9.2.tar.gz",
+	    "https://github.com/flann-lib/flann/archive/refs/tags/1.9.2.tar.gz",
+	],
     )
 
     maybe(
@@ -45,7 +57,10 @@ def pcl_repositories():
         build_file = "@rules_pcl//third_party:lz4.BUILD",
         sha256 = "0b0e3aa07c8c063ddf40b082bdf7e37a1562bda40a0ff5272957f3e987e0e54b",
         strip_prefix = "lz4-1.9.4",
-        urls = ["https://github.com/lz4/lz4/archive/refs/tags/v1.9.4.tar.gz"],
+        urls = [
+	    "https://qcraft-web.oss-cn-beijing.aliyuncs.com/cache/packages/lz4-1.9.4.tar.gz",
+	    "https://github.com/lz4/lz4/archive/refs/tags/v1.9.4.tar.gz",
+	],
     )
 
     maybe(
@@ -78,7 +93,10 @@ def pcl_repositories():
         sha256 = "5dc5e09509644f703de9a3fb76d99ab2cc67ef53eaf5637db2c6c8b933b28af6",
         build_file = "@rules_pcl//third_party:pcl.BUILD",
         strip_prefix = "pcl-pcl-1.14.1",
-        urls = ["https://github.com/PointCloudLibrary/pcl/archive/refs/tags/pcl-1.14.1.tar.gz"],
+        urls = [
+	    "https://qcraft-web.oss-cn-beijing.aliyuncs.com/cache/packages/pcl-1.14.1.tar.gz",
+	    "https://github.com/PointCloudLibrary/pcl/archive/refs/tags/pcl-1.14.1.tar.gz",
+	],
     )
 
     maybe(
